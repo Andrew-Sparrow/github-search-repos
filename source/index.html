@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Searching in GitHub</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="alternate icon" type="image/png" href="https://github.githubassets.com/favicons/favicon-dark.png">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+  <form class="ad-form"
+    action="https://api.github.com/search/repositories"
+    method="get">
+    <input type="search" name="q" id="search">
+    <label for="search">
+      <input type="submit" value="Отправить">
+    </label>
+  </form>
+  <main class="basic">
+  </main>
+  <template id="error">
+    <div class="error">
+      <p class="error__message">Ошибка загрузки результатов поиска</p>
+      <button class="error__button">Попробовать снова</button>
+    </div>
+  </template>
+  <script src="js/sendForm.js"></script>
+  <script src="js/errorSendForm.js"></script>
+</body>
+
+</html>
