@@ -3,41 +3,43 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Searching in GitHub</title>
+  <title>GitHub searching</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-<!--  <meta-->
-<!--    http-equiv="Content-Security-Policy"-->
-<!--    content="default-src *;-->
-<!--      style-src 'self' http://* 'unsafe-inline';-->
-<!--      script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />-->
-  <meta
-    http-equiv="Content-Security-Policy"
-    content="default-src 'self';
-      img-src 'self';
-      font-src 'self' data:;
-      style-src 'self' http://* 'unsafe-inline';
-      script-src 'self' http://* 'unsafe-inline'">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="github.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
-  <form class="ad-form"
-    action="https://api.github.com/search/repositories"
-    method="get">
-    <input class="inputField" type="search" name="q" id="search">
-    <label for="search">
-      <input type="submit" value="Отправить">
-    </label>
-  </form>
+  <header>
+    <form class="form" method="get" action="https://api.github.com/search/repositories">
+      <input class="inputField" type="text" name="q" id="search">
+      <label for="search">
+        <button type="submit">Отправить</button>
+      </label>
+    </form>
+  </header>
   <main class="basic">
+
   </main>
+  <footer>
+    <div class="pagination"></div>
+  </footer>
+  <template id="template-repo">
+    <div class="repo">
+      <div class="repo__name">Название репозитория</div>
+      <div class="repo__stars">кол-во звёзд на github</div>
+      <div class="repo__data repo__data--last--commit">дата последнего коммита</div>
+      <div class="repo__link">ссылка на Github</div>
+    </div>
+  </template>
   <template id="error">
     <div class="error">
       <p class="error__message">Ошибка формы</p>
       <button class="error__button">Попробовать снова</button>
     </div>
   </template>
+  <script src="js/generateListRepos.js"></script>
+  <script src="js/topRepos.js"></script>
   <script src="js/errorSendForm.js"></script>
   <script src="js/sendForm.js"></script>
 </body>

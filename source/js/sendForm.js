@@ -1,22 +1,22 @@
 'use strict';
 
 (function () {
-  var TIMEOUT_SEND_FORM = 3000; // ms
-  // var URLtoSendForm = 'https://api.github.com/search/repositories/';
-  var URLtoSendForm = 'https://api.github.com/search/code?user:mozilla&page=14';
-  var form = document.querySelector('.ad-form');
+  let TIMEOUT_SEND_FORM = 3000; // ms
+  let form = document.querySelector('.form');
 
   function submitForm(evt) {
-    var formData = new FormData(form);
-    var xhr = new XMLHttpRequest();
-    var inputValue = document.querySelector("inputField").value;
+    // let formData = new FormData(form);
+    let xhr = new XMLHttpRequest();
+    let inputField = document.querySelector(".inputField");
+    let URLtoSendForm = `https://api.github.com/search/repositories?q=${inputField.value}&per_page=10&sort=stars`;
 
     xhr.open('GET', URLtoSendForm, true);
+    xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
 
       if (xhr.status === 200 && xhr.readyState === 4) {
-        console.log('success send form')
+        console.log(xhr.response);
       } else {
         window.errorSendForm.onError();
       }
@@ -32,7 +32,8 @@
       window.errorSendForm.onError();
     });
 
-    xhr.send(formData);
+    // xhr.send(formData);
+    xhr.send();
     evt.preventDefault();
   }
 
