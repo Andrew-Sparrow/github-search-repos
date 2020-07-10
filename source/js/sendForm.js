@@ -10,8 +10,9 @@
     let inputField = document.querySelector(".inputField");
     let URLtoSendForm = `https://api.github.com/search/repositories?q=${inputField.value}&per_page=10&sort=stars`;
 
-    xhr.open('GET', URLtoSendForm, true);
+    xhr.open('POST', URLtoSendForm, true);
     xhr.responseType = 'json';
+    xhr.setRequestHeader('Authorization', 'token 242eedc8c42c32ba4339bb58c06edca6785505ee');
 
     xhr.addEventListener('load', function () {
 
